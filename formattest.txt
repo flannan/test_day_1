@@ -1,0 +1,24 @@
+class test
+{
+    private $a = false;
+    private $r = null;
+    public function show(&$v)
+    {
+        if(!$this->a)
+        {
+            $this->a = true;
+            $this->r = &$v;
+        }
+        var_dump($this->r);
+    }
+    public function reset()
+    {
+        $this->a = false;
+    }
+}
+
+$t = new test();
+
+$a = array(array(1,2),array(3,4),array(5,6));
+foreach($a as &$p)
+    $t->show($p);
